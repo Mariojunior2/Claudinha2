@@ -7,7 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+
     <form>
+        <h1>Me fale um pouco sobre você!</h1>
         <label for="nome">Seu primeiro nome</label><br>
         <input type="text" id="nome" name="nome"><br>
         <div class="sobren">
@@ -17,6 +19,7 @@
         <label for="senha">Escrave uma senha</label>
         <input type="password" id="senha" name="senha"><br>
     <div class="homem">
+        <label for="sexo">Seu sexo</label>
         <label for="homem">Masculino</label>
         <input type="radio" id="homem" name="sexo" value="homem"><br>
     </div>
@@ -25,8 +28,11 @@
         <input type="radio" id="mulher" name="sexo" value="mulher"><br>
     </div>
     <div class="checkbox">
-        <label for="checkbox">Está gostando das perguntas?</label>
+        <label for="checkbox">Tipo favorito!</label>
+        <label for="check">Salgado</label>
         <input type="checkbox" name="checkbox" id="check">
+        <label for="check1">Doce</label>
+        <input type="checkbox" name="checkbox" id="check1">
     </div>
 
     <div class="informacoes">
@@ -60,6 +66,14 @@
     <div class="telef">
         <label for="telf">Escrava seu telefone!</label>
         <input type="tel" name="telf" id="telf" placeholder="+55 47 9999-9999">
+    </div>
+    <div class="felicidade">
+        <label for="felicidade">Seu tempo livre!</label>
+        <input type="range" name="felicidade" id="felicidade" min="0" max="10">
+    </div>
+    <div class="url">
+        <label for="url">Coloque um site que gosta!</label>
+        <input type="url" name="url" id="url" placeholder="https://www.google.com">
     </div>
 
     <div class="submit">
