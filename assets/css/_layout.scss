@@ -1,0 +1,209 @@
+$dark-blue: #0a192f;
+$accent-blue: #64ffda;
+$dark-gray: #172a45;
+$text-primary: #ccd6f6;
+$text-secondary: #8892b0;
+$neon-blue: #00f3ff;
+
+
+@mixin glow-effect {
+  box-shadow: 0 0 15px rgba($accent-blue, 0.3);
+}
+
+@mixin input-style {
+  background: $dark-gray;
+  border: 2px solid lighten($dark-gray, 5%);
+  border-radius: 5px;
+  color: $text-primary;
+  padding: 12px 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:focus {
+    border-color: $accent-blue;
+    outline: none;
+    @include glow-effect;
+  }
+}
+
+body {
+  background: $dark-blue;
+  color: $text-primary;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+}
+
+form {
+  background: $dark-gray;
+  padding: 2.5rem;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, $accent-blue, $neon-blue, $accent-blue);
+    z-index: -1;
+    border-radius: 15px;
+    animation: gradient-animation 8s ease infinite;
+  }
+}
+
+
+label {
+  display: block;
+  margin: 1.2rem 0 0.5rem;
+  font-weight: 500;
+  color: $accent-blue;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]),
+textarea {
+  @include input-style;
+  width: 100%;
+  
+  &::placeholder {
+    color: $text-secondary;
+    opacity: 0.7;
+  }
+}
+
+
+input[type="radio"],
+input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid $text-secondary;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+  top: 3px;
+  transition: all 0.3s ease;
+  
+  &:checked {
+    border-color: $accent-blue;
+    background: radial-gradient($accent-blue 50%, transparent 50%);
+  }
+}
+
+input[type="checkbox"] {
+  border-radius: 4px;
+  
+  &:checked {
+    background: $accent-blue;
+    border-color: $accent-blue;
+  }
+}
+
+
+input[type="file"] {
+  &::file-selector-button {
+    background: $dark-blue;
+    color: $text-primary;
+    border: 2px solid $accent-blue;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: $accent-blue;
+      color: $dark-blue;
+    }
+  }
+}
+
+
+.submit input[type="submit"] {
+  background: linear-gradient(135deg, $accent-blue, $neon-blue);
+  color: $dark-blue;
+  padding: 14px 35px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-2px);
+    @include glow-effect;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+    }
+  }
+}
+
+
+.informacoes {
+  border-left: 3px solid $accent-blue;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  
+  p {
+    color: $accent-blue;
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+}
+
+.cores input[type="color"] {
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid $text-secondary;
+  cursor: pointer;
+  
+  &:hover {
+    border-color: $accent-blue;
+  }
+}
+
+
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+@media (max-width: 768px) {
+  form {
+    padding: 1.5rem;
+    
+    &::before {
+      animation: none;
+    }
+  }
+  
+  .submit input[type="submit"] {
+    width: 100%;
+  }
+}
